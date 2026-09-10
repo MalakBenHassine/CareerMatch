@@ -1,41 +1,42 @@
-# CareerMatch — Matching RH par RAG
+# CareerMatch — RAG-based HR Matching
 
-Moteur de matching semantique candidat-offre combinant recherche vectorielle (RAG) et LLM local, avec generation automatique de questions d'entretien personnalisees.
+Semantic candidate-to-job matching engine combining vector search (RAG) and a local LLM, with automatic generation of personalized interview questions.
 
-## Fonctionnalites
+## Features
 
-- Matching semantique candidat-offre (90% de precision de scoring)
-- Generation automatique de 10 questions d'entretien personnalisees par correspondance, via Llama 3.2
-- Recherche vectorielle des CV et offres via Qdrant + Sentence-Transformers
-- API exposee via FastAPI, interface de demonstration en Streamlit
+- Semantic candidate-to-job matching (90% scoring accuracy)
+- Automatic generation of 10 personalized interview questions per match, via Llama 3.2
+- Vector search over resumes and job postings via Qdrant + Sentence-Transformers
+- API exposed via FastAPI, demo interface in Streamlit
 
-## Stack technique
+## Tech stack
 
-- **Backend** : Python, FastAPI, Sentence-Transformers
-- **Base vectorielle** : Qdrant
-- **LLM** : Llama 3.2 via Ollama (inference locale)
-- **Frontend** : Streamlit
-- **Deploiement** : Docker Compose
+- **Backend**: Python, FastAPI, Sentence-Transformers
+- **Vector database**: Qdrant
+- **LLM**: Llama 3.2 via Ollama (local inference)
+- **Frontend**: Streamlit
+- **Deployment**: Docker Compose
 
 ## Architecture
 
 ```
 CareerMatch/
-├── backend/          # API FastAPI, logique de matching et integration LLM
-├── frontend/         # Interface Streamlit
+├── backend/          # FastAPI API, matching logic and LLM integration
+├── frontend/         # Streamlit interface
 └── docker-compose.yml
 ```
 
-## Lancer le projet
+## Running the project
 
 ```bash
 git clone https://github.com/MalakBenHassine/CareerMatch.git
 cd CareerMatch
+cp .env.example .env
 docker-compose up --build
 ```
 
-> Un fichier `.env` d'exemple sans secrets reels est requis a la racine (voir `docker-compose.yml` pour les variables attendues : hote Qdrant, URL Ollama, modeles utilises).
+> Copy `.env.example` to `.env` before starting (see `docker-compose.yml` for the expected variables: Qdrant host, Ollama URL, models used). No real secrets are required — these are local service settings.
 
-## Auteure
+## Author
 
 **Malak Ben Hassine** — [LinkedIn](https://www.linkedin.com/in/malak-ben-hassine-423611353/) · [GitHub](https://github.com/MalakBenHassine)
